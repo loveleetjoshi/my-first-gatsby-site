@@ -1,17 +1,23 @@
-import React from "react";
 import { Link } from "gatsby";
+import React from "react";
 
 import {
   container,
   heading,
-  navLinks,
   navLinkItem,
   navLinkText,
+  navLinks,
+  siteTitle,
 } from "./layout.module.css";
 
+import useSiteMetadata from "../../hooks/useSiteMetadata";
+
 const Layout = ({ pageTitle, children }) => {
+  const siteMetadata = useSiteMetadata();
+
   return (
     <div className={container}>
+      <header className={siteTitle}>{siteMetadata.title}</header>
       <nav>
         <ul className={navLinks}>
           <li className={navLinkItem}>
@@ -22,6 +28,11 @@ const Layout = ({ pageTitle, children }) => {
           <li className={navLinkItem}>
             <Link to="/about" className={navLinkText}>
               About
+            </Link>
+          </li>
+          <li className={navLinkItem}>
+            <Link to="/blog" className={navLinkText}>
+              Blog
             </Link>
           </li>
         </ul>
